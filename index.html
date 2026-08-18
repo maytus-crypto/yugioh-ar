@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blue-Eyes White Dragon AR</title>
+    <!-- เรียกใช้งานไลบรารี A-Frame และ MindAR -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <!-- เริ่มฉาก AR และเรียกใช้ไฟล์ targets.mind -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <!-- เตรียม Assets (โมเดล 3D) -->
+      <a-assets>
+        <a-asset-item id="blueEyesModel" src="./blue-eyes.glb"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- กำหนดจุดที่จะให้โมเดลโผล่ขึ้นมา เมื่อสแกนเจอภาพการ์ด -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <!-- ใส่โมเดลลงไป, ปรับขนาด (scale) ตรงนี้ได้ถ้ามังกรตัวใหญ่หรือเล็กไป -->
+        <!-- ตัวอย่าง scale="0.1 0.1 0.1" คือย่อขนาดลงมา 10 เท่า -->
+        <a-gltf-model rotation="90 0 0 " position="0 0 0" scale="0.1 0.1 0.1" src="#blueEyesModel"></a-gltf-model>
+      </a-entity>
+      
+    </a-scene>
+  </body>
+</html>
