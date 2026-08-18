@@ -1,28 +1,28 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blue-Eyes White Dragon AR</title>
-    <!-- เรียกใช้งานไลบรารี A-Frame และ MindAR -->
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <!-- เริ่มฉาก AR และเรียกใช้ไฟล์ targets.mind -->
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <!-- ตรวจสอบชื่อไฟล์ .mind ของคุณตรงนี้ -->
+    <a-scene mindar-image="imageTargetSrc: ./card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       
-      <!-- เตรียม Assets (โมเดล 3D) -->
       <a-assets>
+        <!-- ตรวจสอบชื่อไฟล์ .glb ของคุณตรงนี้ -->
         <a-asset-item id="blueEyesModel" src="./blue-eyes.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- กำหนดจุดที่จะให้โมเดลโผล่ขึ้นมา เมื่อสแกนเจอภาพการ์ด -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- ใส่โมเดลลงไป, ปรับขนาด (scale) ตรงนี้ได้ถ้ามังกรตัวใหญ่หรือเล็กไป -->
-        <!-- ตัวอย่าง scale="0.1 0.1 0.1" คือย่อขนาดลงมา 10 เท่า -->
-        <a-gltf-model rotation="90 0 0 " position="0 0 0" scale="0.1 0.1 0.1" src="#blueEyesModel"></a-gltf-model>
+        <!-- *** แก้ไขบรรทัดนี้ *** -->
+        <!-- เราจะลองปรับ Scale และ Position ใหม่ -->
+        <!-- 1. ปรับ Scale ให้ใหญ่ขึ้น: ลองเปลี่ยน 0.05 เป็น 1 หรือ 10 หรือ 50 -->
+        <!-- 2. หมุน: ตรวจสอบการหมุน (rotation) -> หมุน 90 0 0 เพื่อให้ตั้งตรงเมื่อเทียบกับการ์ด -->
+        <!-- 3. ตำแหน่ง: เลื่อนออกมาด้านหน้าเล็กน้อย (position="0 0 1") -->
+        
+        <a-gltf-model id="dragonModel" rotation="90 0 0" position="0 0 1" scale="1 1 1" src="#blueEyesModel"></a-gltf-model>
       </a-entity>
       
     </a-scene>
